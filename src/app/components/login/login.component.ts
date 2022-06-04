@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { Credenciais } from './../../models/credenciais';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,21 +21,24 @@ export class LoginComponent implements OnInit {
   senha = new FormControl(null, Validators.minLength(3));
 
 
-  constructor(private toast: ToastrService) { }
+  constructor(
+    private toast: ToastrService,
+    private service: AuthService,
+    private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
   logar(){
-    this.toast.error('Usuário e/ou senha inválidos!', 'Login');
+    this.service.authenticate(this.creds).subscribe(resposta => {
+      this.service.successfullLogin(resposta.headers.get('Authorization').substring(7));
+      this.router.navigate(['']);
+    }, () => {
+      this.toast.error('Usuário e/ou senha inválidos!');
+    })
   }
 
   validaCampos(): boolean {
-    if(this.email.valid && this.senha.valid){
-      return true;
-    } else {
-      return false;
-    }
+    return this.email.valid && this.senha.valid;
   }
 
 }
