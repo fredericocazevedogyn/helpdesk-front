@@ -1,1 +1,93 @@
-<p>chamado-update works!</p>
+<div class="container mat-elevation-z8">
+    <h1 class="full-width">Alterando Chamado</h1>
+    <img class="full-width" src="assets/img/LogoEntrelinhas.svg">
+
+    <form class="form">
+        
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Título do chamado</mat-label>
+          <input 
+          [(ngModel)]="chamado.titulo"
+          name="titulo"
+          [formControl]="titulo"
+          required
+          matInput 
+          placeholder="Título do chamado">
+        </mat-form-field>
+        
+        <div class="status-prioridade">
+            <mat-form-field appearance="outline">
+                <mat-label>Selecione um Status</mat-label>
+                <mat-select 
+                    [(ngModel)]="chamado.status"
+                    name="status"
+                    [formControl]="status" 
+                    required>
+                  <mat-option value="0">Aberto</mat-option>
+                  <mat-option value="1">Em Andamento</mat-option>
+                  <mat-option value="2">Encerrado</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Selecione uma Prioridade</mat-label>
+                <mat-select 
+                    [(ngModel)]="chamado.prioridade"
+                    name="prioridade"
+                    [formControl]="prioridade" 
+                    required>
+                  <mat-option value="0">Baixa</mat-option>
+                  <mat-option value="1">Média</mat-option>
+                  <mat-option value="2">Alta</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
+        <div class="tecnico">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Selecione um Técnico</mat-label>
+                <mat-select 
+                    [(ngModel)]="chamado.tecnico"
+                    name="tecnico"
+                    [formControl]="tecnico" 
+                    required>
+                  <mat-option *ngFor="let tec of tecnicos" value="{{ tec.id }}">{{ tec.nome }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="cliente">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Selecione um Cliente</mat-label>
+                <mat-select 
+                    [(ngModel)]="chamado.cliente"
+                    name="cliente"
+                    [formControl]="cliente" 
+                    required>
+                  <mat-option *ngFor="let cli of clientes" value="{{ cli.id }}">{{ cli.nome }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="text-area">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <textarea 
+                    [(ngModel)]="chamado.observacao"
+                    name="observacao"
+                    [formControl]="observacao"
+                    required
+                    class="descricao" 
+                    matInput 
+                    placeholder="Descreva aqui sobre o problema"></textarea>
+            </mat-form-field>
+        </div>
+
+        <button (click)="create()" [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Atualizar</button>
+        <button routerLink="../" class="full-width mat-elevation-z4" mat-stroked-button color="warn">Cancelar</button>
+
+        <p class="full-width">Desenvolvido por Frederico Carvalho</p>
+
+    </form>
+
+</div>
