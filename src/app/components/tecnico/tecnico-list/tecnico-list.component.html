@@ -4,13 +4,13 @@
       
   <button routerLink="create" mat-stroked-button color="primary">Novo Técnico</button>
   
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Escreva aqui..." #input>
+  </mat-form-field>
+
     <div class="mat-elevation-z8">
 
-      <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Escreva aqui..." #input>
-      </mat-form-field>
-      
       <table mat-table [dataSource]="dataSource">
     
         <ng-container matColumnDef="position">

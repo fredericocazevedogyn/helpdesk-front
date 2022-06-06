@@ -27,5 +27,11 @@ h1 {
 }
 
 .delete {
-    color: red;
+    color: green;
+}
+
+mat-radio-group {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
 }

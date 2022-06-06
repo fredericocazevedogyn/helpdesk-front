@@ -8,8 +8,7 @@ table {
 }
 
 mat-form-field {
-    width: 50%;
-    padding-left: 1rem;
+    width: 100%;
 }
 
 button {
