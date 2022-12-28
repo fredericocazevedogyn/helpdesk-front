@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Tecnico } from './../../../models/tecnicos';
 import { TecnicoService } from 'src/app/service/tecnico.service';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/service/cliente.service';
 
@@ -24,10 +24,10 @@ export class ClienteUpdateComponent implements OnInit {
     dataCriacao: ''
   }
 
-  nome: FormControl = new FormControl(null, Validators.minLength(3))
-  cpf: FormControl = new FormControl(null, Validators.required)
-  email: FormControl = new FormControl(null, Validators.email)
-  senha: FormControl = new FormControl(null, Validators.minLength(3))
+  nome: UntypedFormControl = new UntypedFormControl(null, Validators.minLength(3))
+  cpf: UntypedFormControl = new UntypedFormControl(null, Validators.required)
+  email: UntypedFormControl = new UntypedFormControl(null, Validators.email)
+  senha: UntypedFormControl = new UntypedFormControl(null, Validators.minLength(3))
 
   constructor(
     private service: ClienteService,

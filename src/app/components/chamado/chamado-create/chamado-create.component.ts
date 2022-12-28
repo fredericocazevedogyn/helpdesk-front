@@ -4,7 +4,7 @@ import { Chamado } from 'src/app/models/chamado';
 import { ChamadoService } from './../../../service/chamado.service';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Tecnico } from './../../../models/tecnicos';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/clientes';
 import { TecnicoService } from 'src/app/service/tecnico.service';
@@ -30,12 +30,12 @@ export class ChamadoCreateComponent implements OnInit {
   clientes: Cliente[] = []
   tecnicos: Tecnico[] = []
 
-  prioridade:   FormControl = new FormControl(null, [Validators.required])
-  status:       FormControl = new FormControl(null, [Validators.required])
-  titulo:       FormControl = new FormControl(null, [Validators.required])
-  observacao:  FormControl = new FormControl(null, [Validators.required])
-  tecnico:      FormControl = new FormControl(null, [Validators.required])
-  cliente:      FormControl = new FormControl(null, [Validators.required])
+  prioridade:   UntypedFormControl = new UntypedFormControl(null, [Validators.required])
+  status:       UntypedFormControl = new UntypedFormControl(null, [Validators.required])
+  titulo:       UntypedFormControl = new UntypedFormControl(null, [Validators.required])
+  observacao:  UntypedFormControl = new UntypedFormControl(null, [Validators.required])
+  tecnico:      UntypedFormControl = new UntypedFormControl(null, [Validators.required])
+  cliente:      UntypedFormControl = new UntypedFormControl(null, [Validators.required])
 
   constructor(
     private clienteService: ClienteService,

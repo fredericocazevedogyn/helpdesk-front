@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Credenciais } from './../../models/credenciais';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
     senha: ''
   }
 
-  email = new FormControl(null, Validators.email);
-  senha = new FormControl(null, Validators.minLength(3));
+  email = new UntypedFormControl(null, Validators.email);
+  senha = new UntypedFormControl(null, Validators.minLength(3));
 
 
   constructor(
